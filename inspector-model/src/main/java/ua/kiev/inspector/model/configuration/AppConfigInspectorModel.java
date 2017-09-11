@@ -17,8 +17,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
-import ua.kiev.inspector.model.dao.DaoFactory;
-
 @Configuration
 @ComponentScan("ua.kiev.inspector.model.dao.impl")
 @PropertySource("classpath:SettingsPool.properties")
@@ -27,13 +25,7 @@ public class AppConfigInspectorModel {
 	
 	@Autowired
     private Environment env;
-	
-	@Bean
-	public DaoFactory daoFactory() {
-		DaoFactory factory = DaoFactory.getInstance();
-		return factory;
-	}
-	
+
 	@Bean
 	public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
 		HibernateTransactionManager txManager = new HibernateTransactionManager();
@@ -76,7 +68,6 @@ public class AppConfigInspectorModel {
 			dataSource.setMaxPoolSize(new Integer(env.getProperty("datasource.maxPoolSize")));
 			dataSource.setMinPoolSize(new Integer(env.getProperty("datasource.minPoolsize")));
 			dataSource.setMaxStatements(100);
-			//dataSource.setIdleConnectionTestPeriod(3600);
 		} catch (PropertyVetoException e) {
 			e.printStackTrace();
 		}
