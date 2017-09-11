@@ -20,21 +20,21 @@ public class InspecptorTaskDaoImpl implements InspectorTaskDao{
 
 	@Transactional
 	@Override
-	public List<InspectorTask> getAllRisoDoc(int inspectorUserId) {
+	public List<InspectorTask> getListTask(String email) {
 		Session session = sessionFactory.getCurrentSession();
-		String query = "SELECT r FROM InspectorTask r WHERE r.inspector.usersId = :userId";
+		String query = "SELECT r FROM InspectorTask r WHERE r.inspector.email = :email";
 		TypedQuery<InspectorTask> typedQuery = session.createQuery(query, InspectorTask.class);
-		typedQuery.setParameter("userId", inspectorUserId);
+		typedQuery.setParameter("email", email);
 		return typedQuery.getResultList();
 	}
 
 	@Transactional
 	@Override
-	public InspectorTask getByRispDoc(int id, int userId) {
+	public InspectorTask byTask(int id, String email) {
 		Session session = sessionFactory.getCurrentSession();
-		String query = "SELECT r FROM InspectorTask r WHERE r.inspector.usersId = :usersId AND r.id = :id";
+		String query = "SELECT r FROM InspectorTask r WHERE r.inspector.email = :email AND r.id = :id";
 		TypedQuery<InspectorTask> typedQuery = session.createQuery(query, InspectorTask.class);
-		typedQuery.setParameter("usersId", userId);
+		typedQuery.setParameter("email", email);
 		typedQuery.setParameter("id", id);
 		return typedQuery.getSingleResult();
 	}

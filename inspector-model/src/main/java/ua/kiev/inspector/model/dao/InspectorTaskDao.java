@@ -6,7 +6,7 @@ import ua.kiev.inspector.model.entity.InspectorTask;
 
 public interface InspectorTaskDao {
 	
-	List<InspectorTask> getAllRisoDoc(int inspectorUserId);
-	InspectorTask getByRispDoc(int id, int userId);
+	List<InspectorTask> getListTask(String email);
+	InspectorTask byTask(int id, String email);
 
 }
