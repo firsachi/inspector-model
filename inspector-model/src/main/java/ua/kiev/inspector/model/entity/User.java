@@ -34,7 +34,7 @@ public class User implements Serializable {
 	private String lastName;
 
 	@Column(name="mail")
-	private String mail;
+	private String email;
 
 	@Column(name="name")
 	private String firstName;
@@ -83,12 +83,12 @@ public class User implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public String getMail() {
-		return mail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setEmail(String mail) {
+		this.email = mail;
 	}
 
 	public String getFirstName() {
