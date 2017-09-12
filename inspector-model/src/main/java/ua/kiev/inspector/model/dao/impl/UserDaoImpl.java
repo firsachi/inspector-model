@@ -44,7 +44,7 @@ class UserDaoImpl implements UserDao{
 	@Transactional
 	public User findByUserName(String username) {
 		Session session = sessionFactory.getCurrentSession();
-		String query = "SELECT u FROM User u WHERE u.mail = :username";
+		String query = "SELECT u FROM User u WHERE u.email = :username";
 		TypedQuery<User> typedQuery = session.createQuery(query, User.class);
 		typedQuery.setParameter("username", username);
 		List<User> users = typedQuery.getResultList();
